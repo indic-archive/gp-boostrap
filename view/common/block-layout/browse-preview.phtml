@@ -39,7 +39,7 @@ $thumbnail = $this->plugin('thumbnail');
                         $linkContent .= '<span class="resource-name">' . $escape($heading) . '</span>';
                     endif;
                     if ($linkContent !== '') {
-                        echo $resource->linkRaw($linkContent, null, ['class' => 'resource-link']);
+                        echo $resource->linkRaw($linkContent, null, ['class' => 'resource-link stretched-link']);
                     }
                     ?>
                     <?php if ($showBody && $body): ?>

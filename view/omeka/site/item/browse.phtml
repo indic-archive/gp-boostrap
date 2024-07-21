@@ -56,7 +56,7 @@ foreach ($items as $item):
           <div class="mt-auto">
             <?php
             $linkContent = sprintf('<span class="resource-name">%s</span>', $escape($heading));
-            echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']);
+            echo $item->linkRaw($linkContent, null, ['class' => 'resource-link stretched-link']);
             ?>
             <?php if ($body): ?>
               <div class="description"><?php echo $escape($body); ?></div>
