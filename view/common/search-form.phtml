@@ -1,0 +1,25 @@
+<?php
+$translate = $this->plugin('translate');
+$searchType = $this->siteSetting('search_type', 'sitewide');
+switch ($searchType) {
+    case 'cross-site':
+        $searchAction = $this->url('site/cross-site-search', ['action' => 'results'], true);
+        break;
+    case 'sitewide':
+    default:
+        $searchAction = $this->url('site/resource', ['controller' => 'index', 'action' => 'search'], true);
+}
+$searchValue = $this->escapeHtml($this->params()->fromQuery('fulltext_search', ''));
+
+$siteSlug = $this->params()->fromRoute('site-slug');
+$searchAction = $this->url('site/search', ['site-slug' => $siteSlug, 'controller' => 'SearchController', 'action' => 'search'], false);
+$resultsAction = $this->url('site/results', ['site-slug' => $siteSlug, 'controller' => 'SearchController', 'action' => 'results'], false);
+?>
+<form action="<?php echo $this->escapeHtml($searchAction); ?>" id="search-form" class="d-flex flex-grow-1 align-self-stretch" role="search" data-url="<?php echo $this->escapeHtml($searchAction); ?>" data-results-url="<?php echo $this->escapeHtml($resultsAction); ?>">
+  <div class="input-group">
+    <span class="input-group-text border border-0 bg-transparent" id="global-search">
+    <i class="bi bi-search" style="font-size: 1.5rem;"></i>
+    </span>
+    <input class="form-control border border-0 rounded-0" type="search" name="fulltext_search" value="<?php echo $searchValue; ?>" placeholder="<?php echo $translate('Search'); ?>" aria-label="<?php echo $translate('Search'); ?>" aria-describedby="global-search">
+  </div>
+</form>

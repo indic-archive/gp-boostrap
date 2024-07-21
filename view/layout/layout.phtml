@@ -33,14 +33,7 @@ $org_logo = $this->themeSettingAssetUrl('org_logo');
               <a class="navbar-brand pe-3 me-0 border-end" href="/">
                 <img class="" src="<?php echo $this->themeSettingAssetUrl('logo'); ?>"  alt="<?php echo $site_title; ?>" title="<?php echo $site_title; ?>">
               </a>
-              <form class="d-flex flex-grow-1 align-self-stretch" role="search">
-                <div class="input-group">
-                  <span class="input-group-text border border-0 bg-transparent" id="global-search">
-                    <i class="bi bi-search" style="font-size: 1.5rem;"></i>
-                  </span>
-                  <input class="form-control border border-0 rounded-0" type="search" placeholder="Search" aria-label="Search" aria-describedby="global-search">
-                </div>
-              </form>
+              <?php echo $this->partial('common/search-form'); ?>
               <div class="align-self-end align-self-center">
                 <?php echo $this->partial(
                     'main-navigation.phtml',
