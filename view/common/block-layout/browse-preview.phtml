@@ -9,7 +9,7 @@ $thumbnail = $this->plugin('thumbnail');
 <h2><?php echo $escape($this->heading); ?></h2>
 <?php endif; ?>
 
-<div class="resource-list preview row g-2 justify-content-center">
+<div class="resource-list preview row g-3 justify-content-center">
     <?php
     $showThumbnail = in_array('thumbnail', $this->components);
     $showHeading = in_array('resource-heading', $this->components);
@@ -26,22 +26,27 @@ $thumbnail = $this->plugin('thumbnail');
         $body = $bodyTerm ? $resource->value($bodyTerm, ['lang' => $valueLang]) : $resource->displayDescription(null, $valueLang);
     ?>
         <div class="<?php echo $this->resourceType; ?> resource col-3">
-          <div class="border rounded-1 h-100">
+          <div class="card h-100">
             <?php
-            $linkContent = '';
             if ($showThumbnail):
-                $linkContent .= $this->thumbnail($resource, 'medium', ['width' => '100%']);
-            endif;
-            if ($showHeading):
-                $linkContent .= '<span class="resource-name">' . $escape($heading) . '</span>';
-            endif;
-            if ($linkContent !== '') {
-                echo $resource->linkRaw($linkContent, null, ['class' => 'resource-link']);
-            }
-            ?>
-            <?php if ($showBody && $body): ?>
-            <div class="description"><?php echo $escape($body); ?></div>
-            <?php endif; ?>
+                echo $this->thumbnail($resource, 'medium', ['width' => '100%', 'class' => 'card-img-top']);
+            endif; ?>
+            <div class="card-body d-flex flex-column">
+                <div class="mt-auto">
+                    <?php
+                    $linkContent = '';
+                    if ($showHeading):
+                        $linkContent .= '<span class="resource-name">' . $escape($heading) . '</span>';
+                    endif;
+                    if ($linkContent !== '') {
+                        echo $resource->linkRaw($linkContent, null, ['class' => 'resource-link']);
+                    }
+                    ?>
+                    <?php if ($showBody && $body): ?>
+                    <div class="description"><?php echo $escape($body); ?></div>
+                    <?php endif; ?>
+                </div>
+            </div>
           </div>
         </div>
     <?php endforeach; ?>
