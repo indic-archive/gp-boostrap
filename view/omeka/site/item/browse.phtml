@@ -31,10 +31,10 @@ endif;
 
 <?php echo $this->searchFilters(); ?>
 
-<div class="browse-controls">
-    <?php echo $this->pagination(); ?>
-    <?php echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
-    <?php echo $this->browse()->renderSortSelector('items'); ?>
+<div class="browse-controls row my-4">
+    <div class="col-4"><?php echo $this->pagination(); ?></div>
+    <div class="col-4"><?php echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?></div>
+    <div class="col-4"><?php echo $this->browse()->renderSortSelector('items'); ?></div>
 </div>
 
 <?php $this->trigger('view.browse.before'); ?>
@@ -69,4 +69,4 @@ foreach ($items as $item):
 </div>
 <?php echo ($itemSetShow) ? '</div>' : ''; ?>
 <?php $this->trigger('view.browse.after'); ?>
-<?php echo $this->pagination(); ?>
+<div class="my-4"><?php echo $this->pagination(); ?></div>
