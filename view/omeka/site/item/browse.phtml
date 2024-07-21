@@ -38,7 +38,7 @@ endif;
 </div>
 
 <?php $this->trigger('view.browse.before'); ?>
-<ul class="resource-list">
+<div class="resource-list row g-3 justify-content-center">
 <?php
 $headingTerm = $this->siteSetting('browse_heading_property_term');
 $bodyTerm = $this->siteSetting('browse_body_property_term');
@@ -46,19 +46,27 @@ foreach ($items as $item):
     $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
     $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => $valueLang]) : $item->displayDescription(null, $valueLang);
 ?>
-    <li class="item resource">
+    <div class="item resource col-3">
+      <div class="card h-100">
+
         <?php
-        $linkContent = sprintf('%s<span class="resource-name">%s</span>',
-            $thumbnail($item, 'medium'),
-            $escape($heading));
-        echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']);
+        echo $thumbnail($item, 'medium', ['class' => 'card-img-top']);
         ?>
-        <?php if ($body): ?>
-        <div class="description"><?php echo $escape($body); ?></div>
-        <?php endif; ?>
-    </li>
+        <div class="card-body d-flex flex-column">
+          <div class="mt-auto">
+            <?php
+            $linkContent = sprintf('<span class="resource-name">%s</span>', $escape($heading));
+            echo $item->linkRaw($linkContent, null, ['class' => 'resource-link']);
+            ?>
+            <?php if ($body): ?>
+              <div class="description"><?php echo $escape($body); ?></div>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
+    </div>
 <?php endforeach; ?>
-</ul>
+</div>
 <?php echo ($itemSetShow) ? '</div>' : ''; ?>
 <?php $this->trigger('view.browse.after'); ?>
 <?php echo $this->pagination(); ?>
