@@ -2,11 +2,23 @@
 $translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 $thumbnail = $this->plugin('thumbnail');
+$hyperlink = $this->plugin('hyperlink');
 ?>
 <div class="preview-block">
 
 <?php if ($this->heading): ?>
-<h2><?php echo $escape($this->heading); ?></h2>
+<div class="d-flex">
+  <h2 class="flex-grow-1"><?php echo $escape($this->heading); ?></h2>
+  <?php if ($this->linkText): ?>
+  <div>
+    <?php
+    $browse_link_text = $escape($this->linkText) . ' <i class="bi bi-arrow-right"></i>';
+    echo $hyperlink->raw($browse_link_text, $this->url(
+        'site/resource', ['controller' => $this->resourceType, 'action' => 'browse'], ['query' => $this->query], true
+    )); ?>
+  </div>
+  <?php endif; ?>
+</div>
 <?php endif; ?>
 
 <div class="resource-list preview row g-3 justify-content-center">
@@ -25,7 +37,7 @@ $thumbnail = $this->plugin('thumbnail');
         $heading = $headingTerm ? $resource->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $resource->displayTitle(null, $valueLang);
         $body = $bodyTerm ? $resource->value($bodyTerm, ['lang' => $valueLang]) : $resource->displayDescription(null, $valueLang);
     ?>
-        <div class="<?php echo $this->resourceType; ?> resource col-3">
+        <div class="<?php echo $this->resourceType; ?> resource col-2">
           <div class="card h-100">
             <?php
             if ($showThumbnail):
@@ -51,13 +63,5 @@ $thumbnail = $this->plugin('thumbnail');
         </div>
     <?php endforeach; ?>
 </div>
-
-<?php
-if ($this->linkText):
-    echo $this->hyperlink($this->linkText, $this->url(
-        'site/resource', ['controller' => $this->resourceType, 'action' => 'browse'], ['query' => $this->query], true
-    ));
-endif;
-?>
 
 </div>
