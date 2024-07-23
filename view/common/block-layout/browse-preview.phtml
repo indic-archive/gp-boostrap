@@ -7,7 +7,7 @@ $hyperlink = $this->plugin('hyperlink');
 <div class="preview-block my-5">
 
 <?php if ($this->heading): ?>
-<div class="d-flex mx-4">
+<div class="d-flex mx-4 mb-4">
   <h2 class="flex-grow-1"><?php echo $escape($this->heading); ?></h2>
   <?php if ($this->linkText): ?>
   <div>
@@ -38,7 +38,7 @@ $hyperlink = $this->plugin('hyperlink');
         $body = $bodyTerm ? $resource->value($bodyTerm, ['lang' => $valueLang]) : $resource->displayDescription(null, $valueLang);
     ?>
         <div class="<?php echo $this->resourceType; ?> resource col-2">
-          <div class="h-100 d-flex flex-column">
+          <div class="h-100 d-flex flex-column position-relative">
             <?php
             if ($showThumbnail):
                 echo $this->thumbnail($resource, 'medium', ['width' => '100%', 'class' => '']);
