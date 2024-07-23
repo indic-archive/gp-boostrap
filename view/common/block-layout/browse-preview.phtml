@@ -37,7 +37,7 @@ $hyperlink = $this->plugin('hyperlink');
         $heading = $headingTerm ? $resource->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $resource->displayTitle(null, $valueLang);
         $body = $bodyTerm ? $resource->value($bodyTerm, ['lang' => $valueLang]) : $resource->displayDescription(null, $valueLang);
     ?>
-        <div class="<?php echo $this->resourceType; ?> resource col-2">
+        <div class="<?php echo $this->resourceType; ?> resource col-sm-6 col-md-3 col-lg-2">
           <div class="h-100 d-flex flex-column position-relative">
             <?php
             if ($showThumbnail):
