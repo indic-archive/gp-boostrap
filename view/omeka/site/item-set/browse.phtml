@@ -14,13 +14,13 @@ $this->htmlElement('body')->appendAttribute('class', 'item-set resource browse')
 
 <?php echo $this->searchFilters(); ?>
 
-<div class="browse-controls">
-    <?php echo $this->pagination(); ?>
-    <?php echo $this->hyperlink($translate('Advanced search'), $this->url(null, ['action' => 'search'], true), ['class' => 'advanced-search']); ?>
+<div class="browse-controls row my-4">
+    <div class="col-4"><?php echo $this->pagination(); ?></div>
+    <div class="col-4"><?php echo $this->hyperlink($translate('Advanced search'), $this->url(null, ['action' => 'search'], true), ['class' => 'advanced-search']); ?></div>
 </div>
 
 <?php $this->trigger('view.browse.before'); ?>
-<ul class="resource-list">
+<div class="resource-list row">
 <?php
 $headingTerm = $this->siteSetting('browse_heading_property_term');
 $bodyTerm = $this->siteSetting('browse_body_property_term');
@@ -28,18 +28,27 @@ foreach ($itemSets as $itemSet):
     $heading = $headingTerm ? $itemSet->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $itemSet->displayTitle(null, $valueLang);
     $body = $bodyTerm ? $itemSet->value($bodyTerm, ['lang' => $valueLang]) : $itemSet->displayDescription(null, $valueLang);
 ?>
-    <li class="item-set resource">
-        <?php
-        $linkContent = sprintf('%s<span class="resource-name">%s</span>',
-            $thumbnail($itemSet, 'medium'),
-            $escape($heading));
-        echo $itemSet->linkRaw($linkContent, null, ['class' => 'resource-link']);
-        ?>
-        <?php if ($body): ?>
-        <div class="description"><?php echo $escape($body); ?></div>
-        <?php endif; ?>
-    </li>
+    <div class="item-set resource col-sm-6 col-md-3 col-lg-2">
+        <div class="card h-100">
+            <?php
+            echo $thumbnail($itemSet, 'medium', ['class' => 'card-img-top']);
+            ?>
+            <div class="card-body d-flex flex-column">
+                <div class="mt-auto">
+                    <?php
+                    $linkContent = sprintf('<span class="resource-name">%s</span>', $escape($heading));
+                    echo $itemSet->linkRaw($linkContent, null, ['class' => 'resource-link stretched-link']);
+                    ?>
+                    <?php if ($body): ?>
+                    <div class="description"><?php echo $escape($body); ?></div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php endforeach; ?>
-</ul>
+</div>
 <?php $this->trigger('view.browse.after'); ?>
-<?php echo $this->pagination(); ?>
+<div class="browse-controls row my-4">
+    <div class="col-4"><?php echo $this->pagination(); ?></div>
+</div>
