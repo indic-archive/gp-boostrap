@@ -63,8 +63,16 @@ $org_logo = $this->themeSettingAssetUrl('org_logo');
             <?php echo $this->messages(); ?>
             <?php echo $this->content; ?>
         </div>
-        <footer class="container">
+        <footer class="container-fluid mt-5 pt-5">
+          <div class="d-flex justify-content-evenly align-items-center">
+            <a class="" href="/">
+              <img class="" src="<?php echo $this->themeSettingAssetUrl('logo'); ?>"  alt="<?php echo $site_title; ?>" title="<?php echo $site_title; ?>">
+            </a>
             <span class="powered-by"><?php echo $translate('Powered by Omeka S'); ?></span>
+            <a class="" href="<?php echo $this->themeSetting('org_url', 'https://omeka.org/s/'); ?>" target="_blank">
+              <img class="" src="<?php echo $org_logo; ?>" alt="<?php echo $org_title; ?>" title="<?php echo $org_title; ?>">
+            </a>
+          </div>
         </footer>
     </body>
 </html>
