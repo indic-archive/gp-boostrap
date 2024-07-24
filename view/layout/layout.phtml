@@ -30,9 +30,11 @@ $org_logo = $this->themeSettingAssetUrl('org_logo');
 
         <nav class="navbar navbar-expand-lg p-0 border-bottom shadow-sm">
           <div class="container-fluid d-flex flex-row">
-              <a class="navbar-brand pe-3 me-0 border-end" href="/">
-                <img class="" src="<?php echo $this->themeSettingAssetUrl('logo'); ?>"  alt="<?php echo $site_title; ?>" title="<?php echo $site_title; ?>">
-              </a>
+              <div class="navbar-brand pe-3 me-0 border-end">
+                <a class="" href="/">
+                  <img class="" src="<?php echo $this->themeSettingAssetUrl('logo'); ?>"  alt="<?php echo $site_title; ?>" title="<?php echo $site_title; ?>">
+                </a>
+              </div>
               <?php echo $this->partial('common/search-form'); ?>
               <div class="align-self-end align-self-center">
                 <?php echo $this->partial(
@@ -41,9 +43,11 @@ $org_logo = $this->themeSettingAssetUrl('org_logo');
                 ); ?>
               </div>
               <?php if ($org_logo): ?>
-                <a class="navbar-brand border-start ps-3 align-self-end align-self-center" href="<?php echo $this->themeSetting('org_url', 'https://omeka.org/s/'); ?>" target="_blank">
-                  <img class="" src="<?php echo $org_logo; ?>" alt="<?php echo $org_title; ?>" title="<?php echo $org_title; ?>">
-                </a>
+                <div class="navbar-brand border-start ps-3 align-self-end align-self-center">
+                  <a class="" href="<?php echo $this->themeSetting('org_url', 'https://omeka.org/s/'); ?>" target="_blank">
+                    <img class="" src="<?php echo $org_logo; ?>" alt="<?php echo $org_title; ?>" title="<?php echo $org_title; ?>">
+                  </a>
+                </div>
               <?php endif; ?>
           </div>
         </nav>
