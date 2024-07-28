@@ -11,16 +11,16 @@ if (!$ids) {
     $ids = [null];
 }
 ?>
-<div id="resource-templates" class="field removable multi-value" role="group">
-    <div class="field-meta">
+<div id="resource-templates" class="field removable multi-value row" role="group">
+    <div class="field-meta col-3 position-relative">
         <span id="by-resource-template-label" class="label"><?php echo $translate('Search by template'); ?></span>
         <?php echo $this->hyperlink('', '#', ['class' => 'expand', 'title' => $translate('Expand')]); ?>
         <div class="collapsible">
             <div class="field-description"><?php echo $translate('Searches for resources that use any of these templates.'); ?></div>
         </div>
-        <button type="button" class="add-value o-icon-add button" aria-label="<?php echo $translate('Add new template'); ?>" title="<?php echo $translate('Add new template'); ?>"></button>
+        <button type="button" class="add-value o-icon-add button btn position-absolute top-0 end-0" aria-label="<?php echo $translate('Add new template'); ?>" title="<?php echo $translate('Add new template'); ?>"><i class="bi bi-plus-square"></i></button>
     </div>
-    <div class="inputs">
+    <div class="inputs col-9">
         <?php foreach ($ids as $id): ?>
         <div class="value">
             <?php echo $this->resourceTemplateSelect([
@@ -30,7 +30,7 @@ if (!$ids) {
                     'aria-labelledby' =>  'by-resource-template-label'
                 ],
             ]); ?>
-            <button type="button" class="o-icon-delete remove-value button" aria-label="<?php echo $translate('Remove value'); ?>" title="<?php echo $translate('Remove value'); ?>"></button>
+            <button type="button" class="o-icon-delete remove-value button btn" aria-label="<?php echo $translate('Remove value'); ?>" title="<?php echo $translate('Remove value'); ?>"><i class="bi bi-x-square"></i></button>
         </div>
         <?php endforeach; ?>
     </div>

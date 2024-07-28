@@ -7,15 +7,15 @@ if (isset($query['id'])) {
     }
 }
 ?>
-<div class="field">
-    <div class="field-meta">
-        <label for="id"><?php echo $this->translate('Search by ID'); ?></label>
-        <?php echo $this->hyperlink('', '#', ['class' => 'expand', 'title' => $this->translate('Expand')]); ?>
-        <div class="collapsible">
+<div class="field row">
+    <div class="field-meta col-3">
+        <label class="form-label" for="id"><?php echo $this->translate('Search by ID'); ?></label>
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#id-help" class="btn btn-outline-info btn-sm border-0"><i class="bi bi-info-circle"></i></button>
+        <div class="collapsible collapse text-secondary" id="id-help">
             <div class="field-description"><?php echo $this->translate('Searches for resources by Omeka S ID. You can search for more than one ID by separating them by commas.'); ?></div>
         </div>
     </div>
-    <div class="inputs">
-        <input type="text" name="id" id="id" value="<?php echo $this->escapeHtml($value); ?>">
+    <div class="inputs col-9">
+        <input class="form-control" type="text" name="id" id="id" value="<?php echo $this->escapeHtml($value); ?>">
     </div>
 </div>

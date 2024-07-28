@@ -27,7 +27,7 @@ $queryOption = function($value, array $search, $key, $text) {
 };
 $queryText = function(array $search, $index) use ($translate) {
     $text = isset($search['text']) ? $search['text'] : null;
-    return sprintf('<input type="text" class="query-text" name="%s" value="%s" aria-label="%s">',
+    return sprintf('<input type="text" class="query-text form-control" name="%s" value="%s" aria-label="%s">',
         $this->escapeHtml("property[$index][text]"),
         $this->escapeHtml($text),
         $this->escapeHtml($translate('Query text')));
@@ -43,26 +43,26 @@ if ($this->status()->isSiteRequest()) {
 }
 ?>
 
-<div id="property-queries" class="field removable multi-value" role="group" aria-labelledby="by-value-label">
-    <div class="field-meta">
-        <span id="by-value-label" class="label"><?php echo $translate('Search by value'); ?></span>
-        <button type="button" class="add-value o-icon-add button" aria-label="<?php echo $translate('Add new value'); ?>" title="<?php echo $translate('Add new value'); ?>"></button>
+<div id="property-queries" class="field removable multi-value row" role="group" aria-labelledby="by-value-label">
+    <div class="field-meta col-3 position-relative">
+        <span id="by-value-label" class="label form-label"><?php echo $translate('Search by value'); ?></span>
+        <button type="button" class="add-value o-icon-add button btn position-absolute top-0 end-0" aria-label="<?php echo $translate('Add new value'); ?>" title="<?php echo $translate('Add new value'); ?>"><i class="bi bi-plus-square"></i></button>
     </div>
-    <div class="inputs">
+    <div class="inputs col-9">
         <?php
         $index = 0;
         foreach ($properties as $property):
         $stem = "property[$index]";
         ?>
         <div class="value">
-            <select class="joiner" name="<?php echo $this->escapeHtml($stem . '[joiner]'); ?>" aria-label="<?php echo $translate('Joiner'); ?>">
+            <select class="joiner form-select" name="<?php echo $this->escapeHtml($stem . '[joiner]'); ?>" aria-label="<?php echo $translate('Joiner'); ?>">
                 <?php echo $queryOption('and', $property, 'joiner', $translate('AND')); ?>
                 <?php echo $queryOption('or', $property, 'joiner', $translate('OR')); ?>
             </select>
             <?php echo $this->propertySelect([
                 'name' => $stem . '[property]',
                 'attributes' => [
-                    'class' => 'query-property',
+                    'class' => 'query-property form-select',
                     'value' => isset($property['property']) ? $property['property'] : null,
                     'aria-label' => $translate('Property'),
                 ],
@@ -72,7 +72,7 @@ if ($this->status()->isSiteRequest()) {
                     'query' => $optionsQuery,
                 ]
             ]); ?>
-            <select class="query-type" name="<?php echo $this->escapeHtml($stem . '[type]'); ?>" aria-label="<?php echo $translate('Query type'); ?>">
+            <select class="query-type form-select" name="<?php echo $this->escapeHtml($stem . '[type]'); ?>" aria-label="<?php echo $translate('Query type'); ?>">
                 <?php echo $queryOption('eq', $property, 'type', $translate('is exactly')); ?>
                 <?php echo $queryOption('neq', $property, 'type', $translate('is not exactly')); ?>
                 <?php echo $queryOption('in', $property, 'type', $translate('contains')); ?>
@@ -87,7 +87,7 @@ if ($this->status()->isSiteRequest()) {
                 <?php echo $queryOption('nex', $property, 'type', $translate('has no values')); ?>
             </select>
             <?php echo $queryText($property, $index); ?>
-            <button type="button" class="o-icon-delete remove-value button" aria-label="<?php echo $translate('Remove value'); ?>" title="<?php echo $translate('Remove value'); ?>"></button>
+            <button type="button" class="o-icon-delete remove-value button btn" aria-label="<?php echo $translate('Remove value'); ?>" title="<?php echo $translate('Remove value'); ?>"><i class="bi bi-x-square"></i></button>
         </div>
         <?php
         $index++;

@@ -19,29 +19,30 @@ if ($this->status()->isSiteRequest()) {
 }
 
 ?>
-<div id="resource-class" class="field removable multi-value" role="group">
-    <div class="field-meta">
-        <span id="by-resource-class-label" class="label"><?php echo $translate('Search by class'); ?></span>
-        <?php echo $this->hyperlink('', '#', ['class' => 'expand', 'title' => $translate('Expand')]); ?>
-        <div class="collapsible">
+<div id="resource-class" class="field removable multi-value row" role="group">
+    <div class="field-meta col-3 position-relative">
+        <span id="by-resource-class-label" class="label form-label"><?php echo $translate('Search by class'); ?></span>
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#resource-class-help" class="btn btn-outline-info btn-sm border-0"><i class="bi bi-info-circle"></i></button>
+        <div class="collapsible collapse text-secondary" id="resource-class-help">
             <div class="field-description"><?php echo $translate('Searches for resources that are any of these classes.'); ?></div>
         </div>
-        <button type="button" class="add-value o-icon-add button" aria-label="<?php echo $translate('Add new class'); ?>" title="<?php echo $translate('Add new class'); ?>"></button>
+        <button type="button" class="add-value o-icon-add button btn position-absolute top-0 end-0" aria-label="<?php echo $translate('Add new class'); ?>" title="<?php echo $translate('Add new class'); ?>"><i class="bi bi-plus-square"></i></button>
     </div>
-    <div class="inputs">
+    <div class="inputs col-9">
         <?php foreach ($ids as $id): ?>
         <div class="value">
             <?php echo $this->resourceClassSelect([
                 'name' => 'resource_class_id[]',
                 'attributes' => [
                     'value' => $id,
-                    'aria-labelledby' =>  'by-resource-class-label'
+                    'aria-labelledby' =>  'by-resource-class-label',
+                    'class' => 'form-select',
                 ],
                 'options' => [
                     'query' => $optionsQuery
                 ]
             ]); ?>
-            <button type="button" class="o-icon-delete remove-value button" aria-label="<?php echo $translate('Remove value'); ?>" title="<?php echo $translate('Remove value'); ?>"></button>
+            <button type="button" class="o-icon-delete remove-value button btn" aria-label="<?php echo $translate('Remove value'); ?>" title="<?php echo $translate('Remove value'); ?>"><i class="bi bi-x-square"></i></button>
         </div>
         <?php endforeach; ?>
     </div>

@@ -17,12 +17,14 @@ $sortConfig = $this->browse()->getBrowseService()->getSortConfig($sortConfigCont
 
 $sortBy = new Element\Select('sort_by');
 $sortBy->setAttribute('aria-label', $this->translate('Sort by'));
+$sortBy->setAttribute('class', 'form-select');
 $sortBy->setEmptyOption($this->translate('Select sort by…'));
 $sortBy->setValueOptions($sortConfig);
 $sortBy->setValue($query['sort_by'] ?? '');
 
 $sortOrder = new Element\Select('sort_order');
 $sortOrder->setAttribute('aria-label', $this->translate('Sort order'));
+$sortOrder->setAttribute('class', 'form-select');
 $sortOrder->setEmptyOption($this->translate('Select sort order…'));
 $sortOrder->setValueOptions([
     'asc' => $this->translate('Ascending'),
@@ -30,11 +32,11 @@ $sortOrder->setValueOptions([
 ]);
 $sortOrder->setValue($query['sort_order'] ?? '');
 ?>
-<div class="field">
-    <div class="field-meta">
-        <label><?php echo $this->translate('Sort'); ?></label>
+<div class="field row">
+    <div class="field-meta col-3">
+        <label class="form-label"><?php echo $this->translate('Sort'); ?></label>
     </div>
-    <div class="inputs">
+    <div class="inputs col-9">
         <?php echo $this->formSelect($sortBy); ?>
         <?php echo $this->formSelect($sortOrder); ?>
     </div>

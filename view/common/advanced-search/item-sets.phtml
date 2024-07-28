@@ -38,19 +38,19 @@ if ($this->status()->isSiteRequest()) {
     $selectOptions = [];
 }
 ?>
-<div id="item-sets" class="field removable multi-value" role="group" aria-labelledby="by-item-set-label">
-    <div class="field-meta">
-        <span id="by-item-set-label" class="label"><?php echo $translate('Search by item set'); ?></span>
-        <?php echo $this->hyperlink('', '#', ['class' => 'expand', 'title' => $translate('Expand')]); ?>
-        <div class="collapsible">
+<div id="item-sets" class="field removable multi-value row" role="group" aria-labelledby="by-item-set-label">
+    <div class="field-meta col-3 position-relative">
+        <span id="by-item-set-label form-label" class="label"><?php echo $translate('Search by item set'); ?></span>
+        <button type="button" data-bs-toggle="collapse" data-bs-target="#items-sets-help" class="btn btn-outline-info btn-sm border-0"><i class="bi bi-info-circle"></i></button>
+        <div class="collapsible collapse text-secondary" id="items-sets-help">
             <div class="field-description"><?php echo $translate('Searches for items that are assigned to any of these item sets.'); ?></div>
         </div>
-        <button type="button" class="add-value o-icon-add button" aria-label="<?php echo $translate('Add new item set'); ?>" title="<?php echo $translate('Add new item set'); ?>"></button>
+        <button type="button" class="add-value o-icon-add button btn position-absolute top-0 end-0" aria-label="<?php echo $translate('Add new item set'); ?>" title="<?php echo $translate('Add new item set'); ?>"><i class="bi bi-plus-square"></i></button>
     </div>
-    <div class="inputs">
+    <div class="inputs col-9">
         <?php foreach ($itemSets as $itemSet): ?>
         <div class="value">
-            <select class="item-set-select-type" aria-label="<?php echo $translate('Condition'); ?>">
+            <select class="item-set-select-type form-select" aria-label="<?php echo $translate('Condition'); ?>">
                 <option value="in"<?php echo 'in' === $itemSet['type'] ? ' selected' : ''; ?>><?php echo $translate('In'); ?></option>
                 <option value="not_in"<?php echo 'not_in' === $itemSet['type'] ? ' selected' : ''; ?>><?php echo $translate('Not in'); ?></option>
             </select>
@@ -58,12 +58,12 @@ if ($this->status()->isSiteRequest()) {
                 'name' => ('not_in' === $itemSet['type']) ? 'not_item_set_id[]' : 'item_set_id[]',
                 'attributes' => [
                     'value' => $itemSet['id'],
-                    'class' => 'item-set-select',
+                    'class' => 'item-set-select form-select',
                     'aria-labelledby' => 'by-item-set-label'
                 ],
                 'options' => $selectOptions,
             ]); ?>
-            <button type="button" class="o-icon-delete remove-value button" aria-label="<?php echo $translate('Remove value'); ?>" title="<?php echo $translate('Remove value'); ?>"></button>
+            <button type="button" class="o-icon-delete remove-value button btn" aria-label="<?php echo $translate('Remove value'); ?>" title="<?php echo $translate('Remove value'); ?>"><i class="bi bi-x-square"></i></button>
         </div>
         <?php endforeach; ?>
     </div>

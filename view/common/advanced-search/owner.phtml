@@ -1,12 +1,12 @@
-<div class="field">
-    <div class="field-meta">
+<div class="field row">
+    <div class="field-meta col-3">
         <label for="owner_id"><?php echo $this->translate('Search by owner'); ?></label>
         <?php echo $this->hyperlink('', '#', ['class' => 'expand', 'title' => $this->translate('Expand')]); ?>
         <div class="collapsible">
             <div class="field-description"><?php echo $this->translate('Searches for resources that are owned by this user.'); ?></div>
         </div>
     </div>
-    <div class="inputs">
+    <div class="inputs col-9">
         <?php echo $this->userSelect([
             'name' => 'owner_id',
             'attributes' => [

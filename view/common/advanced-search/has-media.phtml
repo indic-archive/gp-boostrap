@@ -7,6 +7,7 @@ $element->setLabel($this->translate('Search by media presence'))
     ])
     ->setEmptyOption($this->translate('Select media presence…'))
     ->setValue($query['has_media'] ?? '')
-    ->setAttribute('id', 'has_media');
+    ->setAttribute('id', 'has_media')
+    ->setAttribute('class', 'form-select');
 echo $this->formRow($element);
 ?>
