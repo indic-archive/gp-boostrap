@@ -12,7 +12,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/fonts.css'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('bootstrap/js/bootstrap.min.js'));
 $this->trigger('view.layout');
-$userBar = $this->userBar();
+$userBar = $this->AdminBar();
 
 $site_title = $site->title();
 $this->headTitle()->setSeparator(' – ');
