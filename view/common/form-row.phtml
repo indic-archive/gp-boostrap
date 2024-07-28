@@ -9,8 +9,8 @@ $escapeInfo = (false !== $element->getOption('escape_info'));
 <?php if (null === $label || 'hidden' === $element->getAttribute('type')): ?>
 <?php echo $this->formElement($element); ?>
 <?php else: ?>
-<div class="<?php echo $class ?>">
-    <div class="field-meta">
+<div class="<?php echo $class ?> row">
+    <div class="field-meta col-3">
         <?php echo $this->formLabel($element); ?>
         <?php if ($info = $element->getOption('info')): ?>
         <a href="#" class="expand" aria-label=" <?php echo $this->escapeHtml($translate('Expand')); ?>"></a>
@@ -22,7 +22,7 @@ $escapeInfo = (false !== $element->getOption('escape_info'));
         </div>
         <?php endif; ?>
     </div>
-    <div class="inputs">
+    <div class="inputs col-9">
         <?php echo $this->formElement($element); ?>
     </div>
     <?php echo $this->formElementErrors($element, ['class' => 'messages']); ?>
