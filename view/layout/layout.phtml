@@ -6,6 +6,7 @@ $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1')
 // $this->headTitle($this->setting('installation_title', 'Omeka S'))->setSeparator(' · ');
 $this->headLink()->appendStylesheet($this->assetUrl('bootstrap/css/bootstrap-gpura.min.css'));
 $this->headLink()->appendStylesheet("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+$this->headLink()->appendStylesheet($this->assetUrl('css/fonts.css'));
 // $this->headLink()->appendStylesheet($this->assetUrl('css/style.css', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('bootstrap/js/bootstrap.min.js'));
 // $this->headScript()->appendFile($this->assetUrl('js/global.js', 'Omeka'));
