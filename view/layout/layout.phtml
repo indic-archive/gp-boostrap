@@ -12,6 +12,8 @@ $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 
 $this->headScript()->appendFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('bootstrap/js/bootstrap.min.js'));
 $this->headScript()->appendFile($this->assetUrl('js/main.js'));
+$this->jsTranslate();
+
 $this->trigger('view.layout');
 $userBar = $this->AdminBar();
 
