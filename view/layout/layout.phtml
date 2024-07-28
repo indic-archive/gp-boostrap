@@ -14,6 +14,11 @@ $this->trigger('view.layout');
 $userBar = $this->userBar();
 
 $site_title = $site->title();
+$this->headTitle()->setSeparator(' – ');
+$instTitle = $this->setting('installation_title');
+if ($instTitle != ".") {
+    $this->headTitle()->append($instTitle);
+}
 $org_title = $this->themeSetting('org_title');
 $org_logo = $this->themeSettingAssetUrl('org_logo');
 ?>
