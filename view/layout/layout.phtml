@@ -64,23 +64,26 @@ $org_logo = $this->themeSettingAssetUrl('org_logo');
             <?php echo $this->messages(); ?>
             <?php echo $this->content; ?>
         </div>
-        <footer class="container-fluid my-5 pt-5">
-          <div class="row row-gap-5 align-items-center text-center">
-            <div class="col-6 col-md-4">
-              <a class="" href="/">
-                <img class="" src="<?php echo $this->themeSettingAssetUrl('logo'); ?>"  alt="<?php echo $site_title; ?>" title="<?php echo $site_title; ?>">
-              </a>
+        <footer class="container my-5 pt-5 text-center">
+          <div class="row">
+            <div class="col d-none d-md-block border-end  py-5">
             </div>
-            <div class="col-4 d-none d-md-block">
-              <span class="powered-by"><?php echo $translate('Powered by Omeka S'); ?></span>
-            </div>
-            <div class="col-6 col-md-4">
-              <a class="" href="<?php echo $this->themeSetting('org_url', 'https://omeka.org/s/'); ?>" target="_blank">
-                <img class="" src="<?php echo $org_logo; ?>" alt="<?php echo $org_title; ?>" title="<?php echo $org_title; ?>">
-              </a>
-            </div>
-            <div class="col-12 d-md-none">
-              <span class="powered-by"><?php echo $translate('Powered by Omeka S'); ?></span>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="row">
+                <div class="col-6 py-5">
+                  <a class="" href="/">
+                    <img class="mw-100" src="<?php echo $this->themeSettingAssetUrl('logo'); ?>"  alt="<?php echo $site_title; ?>" title="<?php echo $site_title; ?>">
+                  </a>
+                </div>
+                <div class="col-6 py-5">
+                  <a class="" href="<?php echo $this->themeSetting('org_url', 'https://omeka.org/s/'); ?>" target="_blank">
+                    <img class="mw-100" src="<?php echo $org_logo; ?>" alt="<?php echo $org_title; ?>" title="<?php echo $org_title; ?>">
+                  </a>
+                </div>
+                <div class="col">
+                  <span class="powered-by"><?php echo $translate('Powered by Omeka S'); ?></span>
+                </div>
+              </div>
             </div>
           </div>
         </footer>
