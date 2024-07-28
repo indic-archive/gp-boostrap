@@ -7,3 +7,5 @@ A theme based [Bootstrap](https://getbootstrap.com/) for the [Granthappura](http
 This theme uses customized Bootstrap. The repository is at [https://github.com/indic-archive/bootstrap](https://github.com/indic-archive/bootstrap)
 
 Currently it only has customizations in `bootstrap-gpura.scss` file. Once it is modified, run `npm run dist` to generate the distribution files which will be generated in the `dist` directory. Copy content of that directory to replace the contents in the `asset/bootstrap` directory here.
+
+For more general building about Bootstrap read the documentations at [https://getbootstrap.com/docs/5.3/getting-started/contribute/]()
