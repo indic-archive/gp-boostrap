@@ -8,8 +8,8 @@ $this->headLink()->appendStylesheet($this->assetUrl('bootstrap/css/bootstrap-gpu
 $this->headLink()->appendStylesheet("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 $this->headLink()->appendStylesheet($this->assetUrl('css/fonts.css'));
 // $this->headLink()->appendStylesheet($this->assetUrl('css/style.css', 'Omeka'));
-// $this->headScript()->appendFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
+$this->headScript()->appendFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('bootstrap/js/bootstrap.min.js'));
 $this->headScript()->appendFile($this->assetUrl('js/main.js'));
 $this->trigger('view.layout');
