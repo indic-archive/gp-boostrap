@@ -3,10 +3,14 @@ $translate = $this->plugin('translate');
 ?>
 <nav class="pagination d-flex align-items-baseline" role="navigation">
 <?php if ($totalCount): ?>
-    <form method="GET" action="">
+    <form method="GET" action="" class="d-flex align-items-center">
         <?php echo $this->queryToHiddenInputs(['page']); ?>
-        <input type="text" name="page" class="page-input-top" value="<?php echo $currentPage; ?>" size="4" <?php echo ($pageCount == 1) ? 'readonly' : ''; ?> aria-label="<?php echo $translate('Page'); ?>">
-        <span class="page-count"><?php echo sprintf($translate('of %s'), $pageCount); ?></span>
+        <div class="inline-block me-2">
+            <input type="text" name="page" class="page-input-top form-control" value="<?php echo $currentPage; ?>" size="4" <?php echo ($pageCount == 1) ? 'readonly' : ''; ?> aria-label="<?php echo $translate('Page'); ?>">
+        </div>
+        <div class="inline-block">
+            <span class="page-count"><?php echo sprintf($translate('of %s'), $pageCount); ?></span>
+        </div>
     </form>
 
     <?php if ($currentPage != 1): ?>

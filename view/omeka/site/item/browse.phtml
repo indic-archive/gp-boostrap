@@ -32,8 +32,8 @@ endif;
 <?php echo $this->searchFilters(); ?>
 
 <div class="browse-controls row my-4">
-    <div class="col-4"><?php echo $this->pagination(); ?></div>
-    <div class="col-3"><?php echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?></div>
+    <div class="col-5"><?php echo $this->pagination(); ?></div>
+    <div class="col-2 d-flex align-items-center"><?php echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?></div>
     <div class="col-5"><?php echo $this->browse()->renderSortSelector('items'); ?></div>
 </div>
 
