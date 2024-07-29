@@ -1,5 +1,5 @@
 <?php
-$this->headLink()->appendStylesheet($this->assetUrl('css/site/page.css', 'FacetedBrowse'));
+// $this->headLink()->appendStylesheet($this->assetUrl('css/site/page.css', 'FacetedBrowse'));
 $this->headScript()->appendFile($this->assetUrl('js/faceted-browse.js', 'FacetedBrowse'));
 $this->headScript()->appendFile($this->assetUrl('js/site/page.js', 'FacetedBrowse'));
 $this->facetedBrowse()->prepareFacets();
@@ -16,12 +16,12 @@ if (1 === count($categories)) {
     $categoryQuery = $category->query();
 }
 ?>
-<div id="container" 
+<div id="container" class="row"
     data-url-categories="<?php echo $this->escapeHtml($this->url(null, ['action' => 'categories'], true)); ?>"
     data-url-facets="<?php echo $this->escapeHtml($this->url(null, ['action' => 'facets'], true)); ?>"
     data-url-browse="<?php echo $this->escapeHtml($this->url(null, ['action' => 'browse'], true)); ?>"
     data-category-id="<?php echo $this->escapeHtml($categoryId); ?>"
     data-category-query="<?php echo $this->escapeHtml($categoryQuery); ?>">
-    <div id="section-sidebar"></div>
-    <div id="section-content"></div>
+    <div id="section-sidebar" class="col-3"></div>
+    <div id="section-content" class="col-9"></div>
 </div>
