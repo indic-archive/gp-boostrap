@@ -3,7 +3,7 @@
         <?php echo $this->pagination(); ?>
     </div>
     <div class="col-6 col-lg-3 text-end">
-        <a href="#" class="permalink button btn btn-secondary" data-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'page'], ['force_canonical' => true], true)); ?>"><span class="default"><?php echo $this->translate('Copy permalink'); ?> <i class="bi bi-clipboard"></i></span><span class="success"><?php echo $this->translate('Copied!'); ?> <i class="bi bi-clipboard-check"></i></span></a>
+        <a href="#" class="permalink button d-block" data-url="<?php echo $this->escapeHtml($this->url(null, ['action' => 'page'], ['force_canonical' => true], true)); ?>"><span class="default btn btn-secondary"><?php echo $this->translate('Copy permalink'); ?> <i class="bi bi-clipboard"></i></span><span class="success btn btn-success"><?php echo $this->translate('Copied!'); ?> <i class="bi bi-clipboard-check"></i></span></a>
     </div>
     <div class="col-7 col-lg-5 offset-xs-5 offset-sm-5 offset-md-5 offset-lg-0">
         <?php echo $this->sortSelector($sortings); ?>
