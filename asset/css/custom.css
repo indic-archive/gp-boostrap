@@ -19,3 +19,24 @@
 body {
   font-family: 'Manjari', sans-serif;
 }
+
+
+.button.permalink {
+  position: relative;
+}
+
+.button.permalink .success {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.button.permalink .success.active {
+  display: block;
+}
+
+.button.permalink .default.inactive {
+  opacity: 0;
+}
