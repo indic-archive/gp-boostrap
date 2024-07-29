@@ -3,7 +3,7 @@
 <?php elseif ($singleSelect): ?>
 <?php echo $this->formElement($singleSelect); ?>
 <?php else: ?>
-<ul class="value-select-list" data-truncate-values="<?php echo $this->escapeHtml($facet->data('truncate_values')); ?>">
+<ul class="value-select-list list-group" data-truncate-values="<?php echo $this->escapeHtml($facet->data('truncate_values')); ?>">
     <?php
     $index = 0;
     foreach ($values as $key => $value):
@@ -15,10 +15,10 @@
         $dataPropertyId = $key;
     }
     ?>
-    <li class="value-select-list-item" data-index="<?php echo $this->escapeHtml($index++); ?>">
-        <label>
+    <li class="value-select-list-item list-group-item" data-index="<?php echo $this->escapeHtml($index++); ?>">
+        <label class="form-check-label stretched-link">
             <input
-                class="value"
+                class="value form-check-input"
                 type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
                 name="<?php echo sprintf('value_%s', $facet->id()); ?>"
                 data-property-id="<?php echo $this->escapeHtml($dataPropertyId); ?>"

@@ -1,12 +1,12 @@
 <?php if ($singleSelect): ?>
 <?php echo $this->formElement($singleSelect); ?>
 <?php else: ?>
-<ul>
+<ul class="list-group">
     <?php foreach ($itemSets as $itemSet): ?>
-    <li>
+    <li class="list-group-item">
         <label>
             <input
-                class="item-set"
+                class="item-set form-check-input"
                 type="<?php echo ('multiple_list' === $facet->data('select_type')) ? 'checkbox' : 'radio'; ?>"
                 name="<?php echo sprintf('item_set_%s', $facet->id()); ?>"
                 data-item-set-id="<?php echo $this->escapeHtml($itemSet->id()); ?>">
