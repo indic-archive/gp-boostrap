@@ -38,7 +38,7 @@ endif;
 </div>
 
 <?php $this->trigger('view.browse.before'); ?>
-<div class="resource-list row g-3 justify-content-center">
+<div class="resource-list row gx-3 gy-5 justify-content-center">
 <?php
 $headingTerm = $this->siteSetting('browse_heading_property_term');
 $bodyTerm = $this->siteSetting('browse_body_property_term');
@@ -47,13 +47,12 @@ foreach ($items as $item):
     $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => $valueLang]) : $item->displayDescription(null, $valueLang);
 ?>
     <div class="item resource col-sm-6 col-md-3 col-lg-2">
-      <div class="card h-100">
+      <div class="h-100 d-flex flex-column">
 
         <?php
         echo $thumbnail($item, 'medium', ['class' => 'card-img-top']);
         ?>
-        <div class="card-body d-flex flex-column">
-          <div class="mt-auto">
+        <div class="mt-auto">
             <?php
             $linkContent = sprintf('<span class="resource-name">%s</span>', $escape($heading));
             echo $item->linkRaw($linkContent, null, ['class' => 'resource-link stretched-link']);
@@ -61,7 +60,6 @@ foreach ($items as $item):
             <?php if ($body): ?>
               <div class="description"><?php echo $escape($body); ?></div>
             <?php endif; ?>
-          </div>
         </div>
       </div>
     </div>
