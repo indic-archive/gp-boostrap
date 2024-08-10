@@ -2,7 +2,7 @@
 $headingTerm = $this->siteSetting('browse_heading_property_term');
 $bodyTerm = $this->siteSetting('browse_body_property_term');
 ?>
-<div class="resource-list row">
+<div class="resource-list row gx-3 gy-5">
     <?php foreach ($items as $item): ?>
     <?php
     $heading = $headingTerm ? $item->value($headingTerm, ['default' => $this->translate('[Untitled]')]) : $item->displayTitle();
