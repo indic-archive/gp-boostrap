@@ -9,8 +9,9 @@ $valueLang = $filterLocale ? [$lang, ''] : null;
 
 $this->htmlElement('body')->appendAttribute('class', 'item-set resource browse');
 ?>
-
-<?php echo $this->pageTitle($translate('Item sets'), 2); ?>
+<div class="page-title mb-5">
+    <?php echo $this->pageTitle($translate('Item sets'), 2); ?>
+</div>
 
 <?php echo $this->searchFilters(); ?>
 
