@@ -1,5 +1,6 @@
 <?php
 $resourceMedia = $resource->media();
+$translate = $this->plugin('translate');
 
 $pdf_link = NULL;
 $has_flipbook = FALSE;
@@ -11,7 +12,7 @@ foreach ($resourceMedia as $media) {
         $url = $media->source();
         if (preg_match('/.pdf$/', $url)) {
             // Not to show this media item of PDF linked with image if this item has flipbook.
-            $pdf_link = '<div class=""><a class="btn btn-primary" href="' . $url . '">Download</a></div>';
+            $pdf_link = '<div class=""><a class="btn btn-primary" href="' . $url . '" target="_blank">' . $translate('Download PDF') . ' <i class="bi bi-download"></i></i></a></div>';
         }
     }
     elseif ($ingestor == 'html') {
