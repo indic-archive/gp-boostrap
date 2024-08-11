@@ -1,12 +1,46 @@
 <?php
 $resourceMedia = $resource->media();
+
+$pdf_link = NULL;
+$has_flipbook = FALSE;
+
+foreach ($resourceMedia as $media) {
+    /** @var \Omeka\Api\Representation\MediaRepresentation $media */
+    $ingestor = $media->ingester();
+    if ($ingestor == 'url') {
+        $url = $media->source();
+        if (preg_match('/.pdf$/', $url)) {
+            // Not to show this media item of PDF linked with image if this item has flipbook.
+            $pdf_link = '<div class=""><a class="btn btn-primary" href="' . $url . '">Download</a></div>';
+        }
+    }
+    elseif ($ingestor == 'html') {
+        $data = $media->mediaData();
+        if (!empty($data['html']) && preg_match('/\<iframe /', $data['html'])) {
+            $has_flipbook = TRUE;
+        }
+    }
+
+}
+
 ?>
 <?php if ($resourceMedia): ?>
-<div class="media-embeds row g-3">
+<div class="media-embeds row gx-3 gy-5 align-items-center mb-5">
     <?php foreach ($resourceMedia as $media): ?>
-    <div class="col-12 col-lg-6">
-        <?php echo $media->render(); ?>
-    </div>
+        <?php
+        $ingestor = $media->ingester();
+        if ($ingestor == 'url') {
+            $url = $media->source();
+            if (preg_match('/.pdf$/', $url) && $has_flipbook ) {
+                // Not to show this media of stored PDF linked with image if this item has a flipbook.
+                continue;
+            }
+        }
+        ?>
+        <div class="col-12 text-center">
+            <?php echo $media->render(); ?>
+            <?php if (!empty($pdf_link)) { echo $pdf_link; } ?>
+        </div>
     <?php endforeach; ?>
 </div>
 <?php endif; ?>
