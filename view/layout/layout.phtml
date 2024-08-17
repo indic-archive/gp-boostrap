@@ -73,23 +73,30 @@ $org_logo = $this->themeSettingAssetUrl('org_logo');
             <?php echo $this->messages(); ?>
             <?php echo $this->content; ?>
         </div>
-        <footer class="container my-5 pt-5 text-center">
+        <footer class="container my-5 pt-5">
           <div class="row">
-            <div class="col d-none d-md-block border-end  py-5">
+            <div class="col-12 col-md-6 col-lg-3">
+              <?php echo $this->FooterLinks('footer_links_first'); ?>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-3">
+              <?php echo $this->FooterLinks('footer_links_second'); ?>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <?php echo $this->FooterLinks('footer_links_third'); ?>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
               <div class="row">
-                <div class="col-6 py-5">
+                <div class="col-6">
                   <a class="" href="/">
                     <img class="mw-100" src="<?php echo $this->themeSettingAssetUrl('logo'); ?>"  alt="<?php echo $site_title; ?>" title="<?php echo $site_title; ?>">
                   </a>
                 </div>
-                <div class="col-6 py-5">
+                <div class="col-6">
                   <a class="" href="<?php echo $this->themeSetting('org_url', 'https://omeka.org/s/'); ?>" target="_blank">
                     <img class="mw-100" src="<?php echo $org_logo; ?>" alt="<?php echo $org_title; ?>" title="<?php echo $org_title; ?>">
                   </a>
                 </div>
-                <div class="col">
+                <div class="col mt-3">
                   <span class="powered-by"><?php echo $translate('Powered by Omeka S'); ?></span>
                 </div>
               </div>
