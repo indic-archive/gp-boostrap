@@ -96,10 +96,10 @@ $org_logo = $this->themeSettingAssetUrl('org_logo');
                     <img class="mw-100" src="<?php echo $org_logo; ?>" alt="<?php echo $org_title; ?>" title="<?php echo $org_title; ?>">
                   </a>
                 </div>
-                <div class="col mt-3">
-                  <span class="powered-by"><?php echo $translate('Powered by Omeka S'); ?></span>
-                </div>
               </div>
+            </div>
+            <div class="col-12 footer-credits text-center">
+              <?php echo $this->themeSetting('footer_credits'); ?>
             </div>
           </div>
         </footer>
