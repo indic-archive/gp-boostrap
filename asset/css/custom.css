@@ -40,3 +40,16 @@ body {
 .button.permalink .default.inactive {
   opacity: 0;
 }
+
+@media only screen and (max-width : 768px) {
+  #main-logo-image.navbar-brand {
+    border: none !important;
+  }
+  #search-form {
+    width: 50% !important;
+  }
+}
+
+#main-logo-image {
+  border-right: 1px solid #dee2e6; 
+}
