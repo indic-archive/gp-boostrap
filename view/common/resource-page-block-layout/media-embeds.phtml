@@ -12,7 +12,7 @@ foreach ($resourceMedia as $media) {
         $url = $media->source();
         if (preg_match('/.pdf$/', $url)) {
             // Not to show this media item of PDF linked with image if this item has flipbook.
-            $pdf_link = '<div class=""><a class="btn btn-primary" href="' . $url . '" target="_blank">' . $translate('Download PDF') . ' <i class="bi bi-download"></i></i></a></div>';
+            $pdf_link = '<div class="mb-4"><a class="btn btn-primary" href="' . $url . '" target="_blank">' . $translate('Download PDF') . ' <i class="bi bi-download"></i></i></a></div>';
         }
     }
     elseif ($ingestor == 'html') {
@@ -39,8 +39,8 @@ foreach ($resourceMedia as $media) {
         }
         ?>
         <div class="col-12 text-center">
-            <?php echo $media->render(); ?>
             <?php if (!empty($pdf_link)) { echo $pdf_link; } ?>
+            <?php echo $media->render(); ?>
         </div>
     <?php endforeach; ?>
 </div>
