@@ -63,7 +63,7 @@ foreach ($values as $term => $propertyData):
         ?>
         <div class="<?php echo implode(' ', $class); ?>" lang="<?php echo $escape($valueLang); ?>">
             <?php if ($showLocale && $valueLang): ?>
-            <span class="language"><?php echo $valueLang; ?></span>
+            <span class="language badge text-bg-light"><?php echo $valueLang; ?></span>
             <?php endif; ?>
             <span class="value-content"><?php echo $filterLocale ? $value->asHtml($lang) : $value->asHtml(); ?></span>
             <?php if(!$value->isPublic()): ?>
