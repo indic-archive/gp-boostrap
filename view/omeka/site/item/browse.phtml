@@ -49,9 +49,11 @@ $bodyTerm = $this->siteSetting('browse_body_property_term');
 foreach ($items as $item):
     $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
     $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => $valueLang]) : $item->displayDescription(null, $valueLang);
+    $badge = $item->isPublic() ? '' : '<span class="badge text-bg-warning">Private</span>';
+    $private_class = $item->isPublic() ? '' : 'bg-warning-subtle';
 ?>
     <div class="item resource col-sm-6 col-md-3 col-lg-2">
-      <div class="h-100 d-flex flex-column position-relative">
+      <div class="h-100 d-flex flex-column position-relative <?php echo $private_class; ?>">
 
         <?php
         echo $thumbnail($item, 'large', ['class' => 'card-img-top']);
@@ -60,6 +62,7 @@ foreach ($items as $item):
             <?php
             $linkContent = sprintf('<span class="resource-name">%s</span>', $escape($heading));
             echo $item->linkRaw($linkContent, null, ['class' => 'resource-link stretched-link']);
+            echo '&nbsp;' . $badge;
             ?>
             <?php if ($body): ?>
               <div class="description"><?php echo $escape($body); ?></div>

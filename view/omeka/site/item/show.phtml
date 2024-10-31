@@ -1,14 +1,17 @@
 <?php
 $translate = $this->plugin('translate');
 $this->headLink()->appendStylesheet($this->assetUrl('css/resource-page-blocks.css', 'Omeka'));
-$this->htmlElement('body')->appendAttribute('class', 'item resource show');
+$visibility = $item->isPublic() ? 'public' : 'private';
+$this->htmlElement('body')->appendAttribute('class', "item resource show $visibility");
 $filterLocale = (bool) $this->siteSetting('filter_locale_values');
 $lang = $this->lang();
 $valueLang = $filterLocale ? [$lang, ''] : null;
+$badge = $item->isPublic() ? '' : '<span class="badge text-bg-warning">Private</span>';
 ?>
 <div class="page-title mb-5">
     <?php echo $this->pageTitle($item->displayTitle(null, $valueLang), 2); ?>
     <h3 class="visually-hidden"><?php echo $translate('Item'); ?></h3>
+    <?php echo $badge ?>
 </div>
 <?php $this->trigger('view.show.before'); ?>
 <?php echo $this->resourcePageBlocks($item)->getBlocks(); ?>

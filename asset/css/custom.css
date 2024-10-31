@@ -53,3 +53,7 @@ body {
 #main-logo-image {
   border-right: 1px solid #dee2e6; 
 }
+
+body.item.private #content {
+  background-color: var(--bs-warning-bg-subtle) !important
+}
