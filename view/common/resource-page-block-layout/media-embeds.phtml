@@ -4,6 +4,7 @@ $translate = $this->plugin('translate');
 
 $pdf_link = NULL;
 $has_flipbook = FALSE;
+$media_link = NULL;
 
 foreach ($resourceMedia as $media) {
     /** @var \Omeka\Api\Representation\MediaRepresentation $media */
@@ -12,7 +13,7 @@ foreach ($resourceMedia as $media) {
         $url = $media->source();
         if (preg_match('/.pdf$/', $url)) {
             // Not to show this media item of PDF linked with image if this item has flipbook.
-            $pdf_link = '<div class="mb-4"><a class="btn btn-primary" href="' . $url . '" target="_blank">' . $translate('Download PDF') . ' <i class="bi bi-download"></i></i></a></div>';
+            $pdf_link = '<div class="mb-4"><a class="btn btn-primary" href="' . $url . '" target="_blank">' . $translate('Download PDF') . ' <i class="bi bi-download"></i></a></div>';
         }
     }
     elseif ($ingestor == 'html') {
@@ -23,6 +24,12 @@ foreach ($resourceMedia as $media) {
     }
     else if ($ingestor == 'tify_iiif_presentation') {
         $has_flipbook = TRUE;
+    }
+    else if ($ingestor == 'link') {
+        $media_link = $media->render([
+            'attributes' => ['class' => 'btn btn-primary', 'target' => '_blank'],
+            'suffix' => ' <i class="bi bi-download"></i>',
+        ]);
     }
 
 }
@@ -35,16 +42,31 @@ foreach ($resourceMedia as $media) {
         $ingestor = $media->ingester();
         if ($ingestor == 'url') {
             $url = $media->source();
-            if (preg_match('/.pdf$/', $url) && $has_flipbook ) {
+            if (preg_match('/.pdf$/', $url) && ($has_flipbook | !empty($media_link))) {
                 // Not to show this media of stored PDF linked with image if this item has a flipbook.
+                continue;
+            }
+        }
+        else if ($ingestor == 'link' ) {
+            if (!$has_flipbook) {
+                echo $media_link;
+            }
+            else {
                 continue;
             }
         }
         ?>
         <div class="col-12 text-center">
-            <?php if (!empty($pdf_link)) { echo $pdf_link; } ?>
+            <?php
+            if (!empty($media_link)) {
+                echo $media_link;
+            }
+            elseif (!empty($pdf_link)) {
+                echo $pdf_link;
+            }
+            ?>
             <?php echo $media->render(); ?>
         </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 </div>
 <?php endif; ?>
