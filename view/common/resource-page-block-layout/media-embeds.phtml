@@ -68,7 +68,7 @@ foreach ($resourceMedia as $media) {
             <?php
             if ($ingestor == 'tify_iiif_presentation') {
                 $item = $this->resource;
-                echo $media->render(['alternate_url' => 'http://gpura.local/iiif-presentation/3/item/' . $item->id() . '/manifest']);
+                echo $media->render(['alternate_url' => '//gpura.local/iiif-presentation/3/item/' . $item->id() . '/manifest']);
             }
             else {
                 echo $media->render();
