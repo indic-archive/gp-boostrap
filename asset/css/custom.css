@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url(http://fonts.gstatic.com/s/manjari/v12/k3kSo8UPMOBO2w1UdbrYNGHEEaM.woff2) format('woff2');
+  src: url(//fonts.gstatic.com/s/manjari/v12/k3kSo8UPMOBO2w1UdbrYNGHEEaM.woff2) format('woff2');
   unicode-range: U+0D00-0D7F;
 }
 /* malayalam */
@@ -12,7 +12,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(http://fonts.gstatic.com/s/manjari/v12/k3kQo8UPMOBO2w1UfcHoLnnA.woff2) format('woff2');
+  src: url(//fonts.gstatic.com/s/manjari/v12/k3kQo8UPMOBO2w1UfcHoLnnA.woff2) format('woff2');
   unicode-range: U+0D00-0D7F  ;
 }
 
