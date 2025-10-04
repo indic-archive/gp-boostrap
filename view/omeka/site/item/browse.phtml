@@ -50,10 +50,10 @@ foreach ($items as $item):
     $heading = $headingTerm ? $item->value($headingTerm, ['default' => $translate('[Untitled]'), 'lang' => $valueLang]) : $item->displayTitle(null, $valueLang);
     $body = $bodyTerm ? $item->value($bodyTerm, ['lang' => $valueLang]) : $item->displayDescription(null, $valueLang);
     $badge = $item->isPublic() ? '' : '<span class="badge text-bg-warning">Private</span>';
-    $private_class = $item->isPublic() ? '' : 'bg-warning-subtle';
+    $bg_class = $item->isPublic() ? 'bg-body-tertiary' : 'bg-warning-subtle';
 ?>
     <div class="item resource col-sm-6 col-md-3 col-lg-2">
-      <div class="h-100 d-flex flex-column position-relative <?php echo $private_class; ?>">
+      <div class="h-100 d-flex flex-column position-relative <?php echo $bg_class; ?> p-1">
 
         <?php
         echo $thumbnail($item, 'large', ['class' => 'card-img-top']);
