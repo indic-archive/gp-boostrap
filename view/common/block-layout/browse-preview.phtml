@@ -40,7 +40,7 @@ $hyperlink = $this->plugin('hyperlink');
         $bg_class = $resource->isPublic() ? 'bg-body-tertiary' : 'bg-warning-subtle';
     ?>
         <div class="<?php echo $this->resourceType; ?> resource col-sm-6 col-md-3 col-lg-2">
-          <div class="h-100 d-flex flex-column position-relative <?php echo $bg_class; ?> p-1">
+          <div class="h-100 d-flex flex-column position-relative <?php echo $bg_class; ?> p-1 shadow-sm">
             <?php
             if ($showThumbnail): ?>
                 <div><?php echo $this->thumbnail($resource, 'large', ['class' => 'w-100 img-fluid']); ?></div>
